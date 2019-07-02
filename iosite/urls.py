@@ -1,4 +1,4 @@
-"""iosite URL Configuration
+"""mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from .views import led_on, led_off
+from django.views.generic import TemplateView
 
 urlpatterns = [
+    url(r'^$', TemplateView.as_view(template_name='index.html')),
+    url(r'^ledon/', led_on, name='led_on'),
+    url(r'^ledoff/', led_off, name='led_off'),
     url(r'^admin/', admin.site.urls),
 ]
